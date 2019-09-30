@@ -1,20 +1,22 @@
 // Run code here in the context of Chapter 5
 
 function textScripts(text) {
-    let scripts = countBy(text, char => {
-      let script = characterScript(char.codePointAt(0));
-      return script ? script.name : "none";
-    }).filter(({name}) => name != "none");
-  
-    let total = scripts.reduce((n, {count}) => n + count, 0);
-    if (total == 0) return "No scripts found";
-  
-    return scripts.map(({name, count}) => {
-      return `${Math.round(count * 100 / total)}% ${name}`;
-    }).join(", ");
-  }
-  
-  console.log(textScripts('英国的狗说"woof", 俄罗斯的狗说"тяв"'));
+  let scripts = countBy(text, char => {
+    let script = characterScript(char.codePointAt(0));
+    return script ? script.name : "none";
+  }).filter(({ name }) => name != "none");
+
+  let total = scripts.reduce((n, { count }) => n + count, 0);
+  if (total == 0) return "No scripts found";
+
+  return scripts
+    .map(({ name, count }) => {
+      return `${Math.round((count * 100) / total)}% ${name}`;
+    })
+    .join(", ");
+}
+
+console.log(textScripts('英国的狗说"woof", 俄罗斯的狗说"тяв"'));
 
 /*  Exercises
     ====================================
@@ -29,13 +31,16 @@ function textScripts(text) {
 
 */
 
-arrays.reduce(
-    function(accumulator, currentValue) {
-        return accumulator.concat(currentValue);
-    }, []
-);
+arrays.reduce(function(accumulator, currentValue) {
+  return accumulator.concat(currentValue);
+}, []);
 
-console.log(arrays.reduce( (accumulator, currentValue) => accumulator.concat(currentValue), []));
+console.log(
+  arrays.reduce(
+    (accumulator, currentValue) => accumulator.concat(currentValue),
+    []
+  )
+);
 
 // Solution:
 console.log(arrays.reduce((flat, current) => flat.concat(current), []));
@@ -62,10 +67,10 @@ loop(3, n => n > 0, n => n - 1, console.log);
 */
 
 function loop(start, test, update, body) {
-    for (let value = start; test(value); value = update(value)) {
-      body(value);
-    }
+  for (let value = start; test(value); value = update(value)) {
+    body(value);
   }
+}
 
 /*  
 
@@ -104,15 +109,14 @@ elements in the array match if there is no element in the array that does not ma
 */
 
 function every(array, predicate) {
-    for (let element of array) {
-      if (!predicate(element)) return false;
-    }
-    return true;
+  for (let element of array) {
+    if (!predicate(element)) return false;
+  }
+  return true;
 }
-  
 
 function every2(array, predicate) {
-    return !array.some(element => !predicate(element));
+  return !array.some(element => !predicate(element));
 }
 
 /*
@@ -168,13 +172,12 @@ console.log(textScripts('英国的狗说"woof", 俄罗斯的狗说"тяв"'));
 */
 
 function dominantDirection(text) {
-    let counted = countBy(text, char => {
-      let script = characterScript(char.codePointAt(0));
-      return script ? script.direction : "none";
-    }).filter(({name}) => name != "none");
-  
-    if (counted.length == 0) return "ltr";
-  
-    return counted.reduce((a, b) => a.count > b.count ? a : b).name;
+  let counted = countBy(text, char => {
+    let script = characterScript(char.codePointAt(0));
+    return script ? script.direction : "none";
+  }).filter(({ name }) => name != "none");
+
+  if (counted.length == 0) return "ltr";
+
+  return counted.reduce((a, b) => (a.count > b.count ? a : b)).name;
 }
-  
