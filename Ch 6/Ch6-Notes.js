@@ -294,3 +294,22 @@ let stringObject = {
 };
 console.log(stringObject[toStringSymbol]());
 // → a jute rope
+
+/*
+  The Iterator Interface
+  
+*/
+
+// We can directly use this interfae ourselves.
+let okIterator = "OK"[Symbol.iterator]();
+console.log(okIterator.next());
+// → {value: "O", done: false}
+console.log(okIterator.next());
+// → {value: "K", done: false}
+console.log(okIterator.next());
+// → {value: undefined, done: true}
+
+/*
+  Getters, Setters, and Statics
+  Inheritance
+*/
