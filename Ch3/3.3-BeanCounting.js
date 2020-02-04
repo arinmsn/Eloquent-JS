@@ -13,3 +13,21 @@ Your function will need a loop that looks at every character in the string. It c
 Take care to make all the bindings used in the function local to the function by properly declaring them with the let or const keyword.
 
 */
+
+function countChar(string, ch) {
+  let counted = 0;
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] == ch) {
+      counted += 1;
+    }
+  }
+  return counted;
+}
+
+console.log(countChar("VVamenVVVV", "V"));
+
+function countBs(string) {
+  return countChar(string, "B");
+}
+
+console.log(countBs("BOBB"));
