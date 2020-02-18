@@ -1,0 +1,23 @@
+{
+  "name": "Eloquent-JS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "jest.config.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arinmsn/Eloquent-JS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arinmsn/Eloquent-JS/issues"
+  },
+  "homepage": "https://github.com/arinmsn/Eloquent-JS#readme",
+  "devDependencies": {
+    "jest": "^25.1.0"
+  }
+}
